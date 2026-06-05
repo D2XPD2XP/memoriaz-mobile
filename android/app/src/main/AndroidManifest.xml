@@ -1,4 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Akses kamera untuk mengambil foto -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Akses galeri: Android 13+ (READ_MEDIA_IMAGES) dan versi lama -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <!-- Simpan hasil restorasi ke galeri pada Android lama -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+
     <application
         android:label="memoriaz_app"
         android:name="${applicationName}"
