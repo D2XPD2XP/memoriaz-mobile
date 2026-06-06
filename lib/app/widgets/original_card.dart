@@ -30,7 +30,7 @@ class OriginalCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AspectRatio(
-              aspectRatio: 5 / 4,
+              aspectRatio: 5 / 6,
               child: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -45,7 +45,7 @@ class OriginalCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.52),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(40),
                       ),
                       child: Text(
                         'FOTO ASLI',

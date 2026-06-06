@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:memoriaz_app/app/routes/app_pages.dart';
 import 'package:memoriaz_app/app/widgets/camera_button.dart';
 import 'package:memoriaz_app/app/widgets/galery_button.dart';
 import 'package:memoriaz_app/app/widgets/original_card.dart';
@@ -77,7 +78,9 @@ class HomeView extends GetView<HomeController> {
             Spacer(),
             Obx(
               () => ProcessButton(
-                onTap: controller.processImage,
+                onTap: () {
+                  Get.toNamed(Routes.RESULT, arguments: controller.selectedImage.value);
+                },
                 isProcessing: controller.isProcessing.value,
                 enabled: controller.selectedImage.value != null,
               ),
