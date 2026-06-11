@@ -58,7 +58,7 @@ class ResultView extends GetView<ResultController> {
                         ),
                         SizedBox(width: 8),
                         Text(
-                          "PIPELINE DITERAPKAN",
+                          "MODEL DITERAPKAN",
                           style: GoogleFonts.hankenGrotesk(
                             color: Color(0xFF9a9389),
                             fontSize: 14,
@@ -70,17 +70,7 @@ class ResultView extends GetView<ResultController> {
                     SizedBox(height: 12),
                     Row(
                       children: [
-                        PipelineItem(label: "Median Filter"),
-                        SizedBox(width: 8),
-                        PipelineItem(label: "Gaussian Kernel"),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                    Row(
-                      children: [
-                        PipelineItem(label: "Histogram EQ"),
-                        SizedBox(width: 8),
-                        PipelineItem(label: "Unsharp Mask"),
+                        PipelineItem(label: "U-Net"),
                       ],
                     ),
                   ],
