@@ -5,22 +5,20 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../routes/app_pages.dart';
+import '../../../services/image_restoration_service.dart';
+
 class HomeController extends GetxController {
   final ImagePicker _picker = ImagePicker();
+  final ImageRestorationService _restorationService =
+      ImageRestorationService(baseUrl: 'http://192.168.18.25:8000');
 
-  /// Foto asli yang dipilih/diambil pengguna.
   final Rxn<File> selectedImage = Rxn<File>();
 
-  /// Foto hasil pemulihan dari pipeline Python.
   final Rxn<File> restoredImage = Rxn<File>();
 
-  /// True selama pipeline Python berjalan.
   final RxBool isProcessing = false.obs;
 
-  /// Jalankan pipeline pemulihan foto (logic penuh dari Python).
-  ///
-  /// TODO: hubungkan ke backend Python (median/gaussian filter,
-  /// morfologi opening/closing, histogram equalization, unsharp masking).
   Future<void> processImage() async {
     final source = selectedImage.value;
     if (source == null) {
@@ -30,8 +28,12 @@ class HomeController extends GetxController {
 
     try {
       isProcessing.value = true;
-      // TODO: panggil pipeline Python di sini dan set hasilnya.
-      // restoredImage.value = await PythonBridge.restore(source.path, ...);
+      final result = await _restorationService.restore(source);
+      restoredImage.value = result;
+      Get.toNamed(
+        Routes.RESULT,
+        arguments: {'original': source, 'restored': result},
+      );
     } catch (e) {
       Get.snackbar('Gagal memproses', '$e');
     } finally {

@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Akses internet untuk komunikasi dengan backend restorasi -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Akses kamera untuk mengambil foto -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <!-- Akses galeri: Android 13+ (READ_MEDIA_IMAGES) dan versi lama -->
@@ -16,9 +18,10 @@
         android:required="false"/>
 
     <application
-        android:label="memoriaz_app"
+        android:label="MemoriaZ"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"

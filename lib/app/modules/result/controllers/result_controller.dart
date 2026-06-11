@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
 
 class ResultController extends GetxController {
+  final Rxn<File> originalImage = Rxn<File>();
   final Rxn<File> imageToSave = Rxn<File>();
   final RxBool isSaving = false.obs;
 
@@ -13,7 +14,10 @@ class ResultController extends GetxController {
   void onInit() {
     super.onInit();
     final args = Get.arguments;
-    if (args is File) {
+    if (args is Map) {
+      originalImage.value = args['original'] as File?;
+      imageToSave.value = args['restored'] as File?;
+    } else if (args is File) {
       imageToSave.value = args;
     }
   }
