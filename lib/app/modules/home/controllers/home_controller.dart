@@ -11,7 +11,7 @@ import '../../../services/image_restoration_service.dart';
 class HomeController extends GetxController {
   final ImagePicker _picker = ImagePicker();
   final ImageRestorationService _restorationService =
-      ImageRestorationService(baseUrl: 'http://192.168.18.25:8000');
+      ImageRestorationService(baseUrl: 'http://127.0.0.1:8000');
 
   final Rxn<File> selectedImage = Rxn<File>();
 
